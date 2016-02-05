@@ -8,7 +8,6 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import com.byteslounge.spring.tx.dao.UserDAO;
 import com.byteslounge.spring.tx.model.User;
@@ -37,7 +36,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 //	@Override
-//	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	public List<User> getUsers() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
 		return criteria.list();
