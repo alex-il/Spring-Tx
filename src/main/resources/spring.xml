@@ -4,12 +4,13 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context-4.2.xsd 
-    http://www.springframework.org/schema/tx 
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+    http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+    
 
     <tx:annotation-driven/>
    <context:component-scan base-package="com.byteslounge.spring.tx.dao.impl"/>
@@ -29,9 +30,8 @@
         <property name="password" value="xtract1!"/>
     </bean>
 
-	<util:list id="packagesToScan" value-type="java.lang.String">
+	<util:list id="packagesToScan22" value-type="java.lang.String">
 		<array merge="true" value-type="java.lang.String">
-			<value>com.focalinfo.entity</value>
 			<value>com.byteslounge.spring.tx.model</value>
 		</array>
 	</util:list>
@@ -47,7 +47,15 @@
                 <prop key="hibernate.show_sql">true</prop>
             </props>
         </property>
-        <property name="packagesToScan" value="com.byteslounge.spring.tx.model"/>
+        <property name="packagesToScan">
+        	<array>
+              	<value>com.byteslounge.spring.tx.model</value>
+            <!-- 
+        		<value>com.focalinfo.entity</value>
+             -->
+         </array>
+        </property>
+        
     </bean>
 
     <bean id="transactionManager"
